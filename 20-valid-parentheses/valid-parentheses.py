@@ -1,14 +1,13 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         stack=[]
-        closetoOpen={")":"(","}":"{","]":"["}
-        for c in s:
-            if c in closetoOpen:
-                if stack and stack[-1]==closetoOpen[c]:
+        hashmap={")" : "(", "]" : "[", "}" : "{"}
+        for i in s:
+            if i in hashmap:
+                if stack and stack[-1]==hashmap[i]:
                     stack.pop()
                 else:
                     return False
             else:
-                stack.append(c)
+                stack.append(i)
         return True if not stack else False
-
